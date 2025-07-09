@@ -40,4 +40,15 @@ public class CarryOnConfig {
 			reason = "Requires mod to properly function"
 	)
 	public boolean saddledPigFix = false;
+	
+	@Config.Comment("Prevents picking up pack animals such as mules when they have inventories to prevent dupes")
+	@Config.Name("Pack Animal Inventory Fix (CarryOn)")
+	@Config.RequiresMcRestart
+	@MixinConfig.MixinToggle(lateMixin = "mixins.fermiummixins.late.carryon.chesthorse.json", defaultValue = false)
+	@MixinConfig.CompatHandling(
+			modid = ModLoadedUtil.CarryOn_MODID,
+			desired = true,
+			reason = "Requires mod to properly function"
+	)
+	public boolean packAnimalInventoryFix = false;
 }

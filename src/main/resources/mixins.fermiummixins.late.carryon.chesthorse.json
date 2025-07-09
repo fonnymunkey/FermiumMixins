@@ -6,6 +6,6 @@
   "target": "@env(DEFAULT)",
   "minVersion": "0.8",
   "mixins": [
-    "carryon.PickupHandler_PigMixin"
+    "carryon.PickupHandler_HorseMixin"
   ]
 }
