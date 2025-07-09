@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "package": "fermiummixins.mixin",
+  "refmap": "mixins.fermiummixins.refmap.json",
+  "compatibilityLevel": "JAVA_8",
+  "target": "@env(DEFAULT)",
+  "minVersion": "0.8",
+  "mixins": [
+    "bountifulbaubles.ItemFlareGun_FlareMixin",
+    "bountifulbaubles.ModEntities_FlareMixin"
+  ],
+  "client": [
+    "bountifulbaubles.ClientProxy_FlareMixin"
+  ]
+}

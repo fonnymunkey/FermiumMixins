@@ -1,0 +1,145 @@
+plugins {
+    id 'eclipse'
+    id 'idea'
+    id 'net.minecraftforge.gradle' version "${forge_gradle_version}"
+    id 'org.spongepowered.mixin' version "${mixin_gradle_version}"
+}
+
+version = mod_version
+group = mod_id
+base.archivesName = mod_name
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(8)
+
+minecraft {
+    mappings channel: mappings_channel, version: mappings_version
+}
+
+repositories {
+    maven { url = 'https://www.cursemaven.com' }
+    maven { url = "https://api.modrinth.com/maven" }
+}
+
+dependencies {
+    //Forge
+    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+
+    //Mixin
+    implementation "org.spongepowered:mixin:${mixin_version}"
+    annotationProcessor "org.spongepowered:mixin:${mixin_version}:processor"
+    implementation "io.github.llamalad7:mixinextras-common:${mixin_extras_version}"
+    annotationProcessor "io.github.llamalad7:mixinextras-common:${mixin_extras_version}"
+
+    //FermiumBooter
+    implementation fg.deobf("curse.maven:fermiumbooter-${fermiumbooter_version}")
+
+    //CurseMaven Mods
+    implementation fg.deobf("curse.maven:advancedrocketry-${advancedrocketry_version}")
+    implementation fg.deobf("curse.maven:astikor-${astikor_version}")
+    implementation fg.deobf("curse.maven:battletowers-${battletowers_version}")
+    implementation fg.deobf("curse.maven:betterfoliage-${betterfoliage_version}")
+    implementation fg.deobf("curse.maven:betternether-${betternether_version}")
+    implementation fg.deobf("curse.maven:betterquesting-${betterquesting_version}")
+    implementation fg.deobf("curse.maven:betterquestingstandard-${betterquestingstandard_version}")
+    implementation fg.deobf("curse.maven:biomesoplenty-${biomesoplenty_version}")
+    implementation fg.deobf("curse.maven:bloodmoon-${bloodmoon_version}")
+    implementation fg.deobf("curse.maven:bountifulbaubles-${bountifulbaubles_version}")
+    implementation fg.deobf("curse.maven:carryon-${carryon_version}")
+    implementation fg.deobf("curse.maven:champions-${champions_version}")
+    implementation fg.deobf("curse.maven:charm-${charm_version}")
+    implementation fg.deobf("curse.maven:classyhats-${classyhats_version}")
+    implementation fg.deobf("curse.maven:codechickenlib-${codechickenlib_version}")
+    implementation fg.deobf("curse.maven:corpsecomplex-${corpsecomplex_version}")
+    implementation fg.deobf("curse.maven:cosmeticarmorreworked-${cosmeticarmorreworked_version}")
+    implementation fg.deobf("curse.maven:defiled-${defiled_version}")
+    implementation fg.deobf("curse.maven:disenchanter-${disenchanter_version}")
+    implementation fg.deobf("curse.maven:doomlike-${doomlike_version}")
+    implementation fg.deobf("curse.maven:dramatictrees-${dramatictrees_version}")
+    implementation fg.deobf("curse.maven:dynamicsurroundings-${dynamicsurroundings_version}")
+    implementation fg.deobf("curse.maven:dynamicsurroundingshud-${dynamicsurroundingshud_version}")
+    implementation fg.deobf("curse.maven:elenai-${elenai_version}")
+    implementation fg.deobf("curse.maven:fancymenu-${fancymenu_version}")
+    implementation fg.deobf("curse.maven:firstaid-${firstaid_version}")
+    implementation fg.deobf("curse.maven:foodexpansion-${foodexpansion_version}")
+    implementation fg.deobf("curse.maven:forgottenitems-${forgottenitems_version}")
+    implementation fg.deobf("curse.maven:infernalmobs-${infernalmobs_version}")
+    implementation fg.deobf("curse.maven:inspirations-${inspirations_version}")
+    implementation fg.deobf("curse.maven:itemphysics-${itemphysics_version}")
+    implementation fg.deobf("curse.maven:jei-${jei_version}")
+    implementation fg.deobf("curse.maven:locks-${locks_version}")
+    implementation fg.deobf("curse.maven:lostcity-${lostcity_version}")
+    implementation fg.deobf("curse.maven:lycanitesmobs-${lycanites_version}")
+    implementation fg.deobf("curse.maven:mobends-${mobends_version}")
+    implementation fg.deobf("curse.maven:neat-${neat_version}")
+    implementation fg.deobf("curse.maven:notreepunching-${notreepunching_version}")
+    implementation fg.deobf("curse.maven:openterraingenerator-${openterraingenerator_version}")
+    implementation fg.deobf("curse.maven:potioncore-${potioncore_version}")
+    implementation fg.deobf("curse.maven:qualitytools-${qualitytools_version}")
+    implementation fg.deobf("curse.maven:quark-${quark_version}")
+    implementation fg.deobf("curse.maven:reachfix-${reachfix_version}")
+    implementation fg.deobf("curse.maven:reskillable-${reskillable_version}")
+    implementation fg.deobf("curse.maven:roughtweaks-${roughtweaks_version}")
+    implementation fg.deobf("curse.maven:scalinghealth-${scalinghealth_version}")
+    implementation fg.deobf("curse.maven:serene-${sereneseasons_version}")
+    implementation fg.deobf("curse.maven:simpledifficulty-${simpledifficulty_version}")
+    implementation fg.deobf("curse.maven:spawnercontrol-${spawnercontrol_version}")
+    implementation fg.deobf("curse.maven:switchbow-${switchbow_version}")
+    implementation fg.deobf("curse.maven:testdummy-${testdummy_version}")
+    implementation fg.deobf("curse.maven:toolbelt-${toolbelt_version}")
+    implementation fg.deobf("curse.maven:trumpetskeleton-${trumpetskeleton_version}")
+    implementation fg.deobf("curse.maven:waystones-${waystones_version}")
+
+    //CurseMaven Libs
+    implementation fg.deobf("curse.maven:alcatrazcore-${alcatrazcore_version}")
+    implementation fg.deobf("curse.maven:autoreglib-${autoreglib_version}")
+    implementation fg.deobf("curse.maven:baubles-${baubles_version}")
+    implementation fg.deobf("curse.maven:creativecore-${creativecore_version}")
+    implementation fg.deobf("curse.maven:librarianlib-${librarianlib_version}")
+    implementation fg.deobf("curse.maven:mantle-${mantle_version}")
+    implementation fg.deobf("curse.maven:orelib-${orelib_version}")
+    implementation fg.deobf("curse.maven:tschipplib-${tschipplib_version}")
+
+    //ModrinthMaven Mods
+    implementation fg.deobf("maven.modrinth:nether-api:${netherapi_version}")
+}
+
+mixin {
+    add sourceSets.main, "mixins.${mod_id}.refmap.json"
+}
+
+processResources {
+    var replaceProperties = [
+            'mod_id': mod_id,
+            'mod_name': mod_name,
+            'version': mod_version,
+            'mcversion': minecraft_version,
+            'mod_description': mod_description,
+            'mod_author': mod_author
+    ]
+
+    inputs.properties replaceProperties
+
+    filesMatching('mcmod.info') {
+        expand replaceProperties
+    }
+}
+
+jar {
+    manifest {
+        attributes([
+                'Specification-Title'     : mod_name,
+                'Specification-Vendor'    : mod_author,
+                'Specification-Version'   : '1',
+                'Implementation-Title'    : mod_name,
+                'Implementation-Vendor'   : mod_author,
+                'Implementation-Version'  : mod_version,
+                'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+                'FMLCorePlugin': mixin_loader_class,
+                'FMLCorePluginContainsFMLMod': 'true',
+                'ForceLoadAsMod': 'true', //Comment out in dev environment, uncomment for building
+                'TweakClass': 'org.spongepowered.asm.launch.MixinTweaker'
+        ])
+    }
+}
+
+jar.finalizedBy('reobfJar')

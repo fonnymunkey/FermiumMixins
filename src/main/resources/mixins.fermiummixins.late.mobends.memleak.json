@@ -1,0 +1,19 @@
+{
+  "required": true,
+  "package": "fermiummixins.mixin",
+  "refmap": "mixins.fermiummixins.refmap.json",
+  "compatibilityLevel": "JAVA_8",
+  "target": "@env(DEFAULT)",
+  "minVersion": "0.8",
+  "mixins": [
+  ],
+  "client": [
+    "mobends.ArrowTrail_MemLeakMixin",
+    "mobends.ArrowTrailManager_MemLeakMixin",
+    "mobends.DataUpdateHandler_MemLeakMixin",
+    "mobends.EntityDatabase_MemLeakMixin",
+    "mobends.EntityBenderRegistry_MemLeakMixin",
+    "mobends.ModConfig_MemLeakMixin",
+    "mobends.Mutator_MemLeakMixin"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "flare_shoot": {
+    "sounds": [ "fermiummixins:flare_shoot" ]
+  },
+  "flare_burn": {
+    "sounds": [ "fermiummixins:flare_burn" ]
+  }
+}

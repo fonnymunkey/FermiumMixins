@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "package": "fermiummixins.mixin",
+  "refmap": "mixins.fermiummixins.refmap.json",
+  "compatibilityLevel": "JAVA_8",
+  "target": "@env(DEFAULT)",
+  "minVersion": "0.8",
+  "mixins": [
+    "champions.ChampionHelper_InfernalMixin",
+    "infernalmobs.InfernalMobsCore_ChampionMixin"
+  ]
+}

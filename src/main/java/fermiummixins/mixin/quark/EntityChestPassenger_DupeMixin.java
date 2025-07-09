@@ -1,0 +1,53 @@
+package fermiummixins.mixin.quark;
+
+import net.minecraft.entity.Entity;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.InventoryHelper;
+import net.minecraft.world.World;
+import net.minecraftforge.common.util.ITeleporter;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Overwrite;
+import org.spongepowered.asm.mixin.Unique;
+import vazkii.quark.management.entity.EntityChestPassenger;
+
+import javax.annotation.Nullable;
+
+@Mixin(EntityChestPassenger.class)
+public abstract class EntityChestPassenger_DupeMixin extends Entity implements IInventory {
+
+    public EntityChestPassenger_DupeMixin(World worldIn) {
+        super(worldIn);
+    }
+
+    @Unique
+    private boolean fermiummixins$dropContentsWhenDead = true;
+
+    @Override
+    @Nullable
+    public Entity changeDimension(int dimensionIn, ITeleporter teleporter) {
+        this.fermiummixins$dropContentsWhenDead = false;
+        return super.changeDimension(dimensionIn, teleporter);
+    }
+
+    /**
+     * @author fonnymunkey
+     * @reason fix dupe bug
+     */
+    @Overwrite
+    public void setDropItemsWhenDead(boolean value) {
+        this.fermiummixins$dropContentsWhenDead = value;
+    }
+
+    /**
+     * @author fonnymunkey
+     * @reason fix dupe bug
+     */
+    @Overwrite
+    public void setDead() {
+        if(!this.world.isRemote && this.fermiummixins$dropContentsWhenDead) {
+            InventoryHelper.dropInventoryItems(this.world, this, this);
+            InventoryHelper.spawnItemStack(this.world, this.posX, this.posY, this.posZ, ((EntityChestPassenger)(Object)this).getChestType());
+        }
+        super.setDead();
+    }
+}
