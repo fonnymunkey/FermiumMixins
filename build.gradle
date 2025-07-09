@@ -84,7 +84,6 @@ dependencies {
     implementation fg.deobf("curse.maven:simpledifficulty-${simpledifficulty_version}")
     implementation fg.deobf("curse.maven:spawnercontrol-${spawnercontrol_version}")
     implementation fg.deobf("curse.maven:switchbow-${switchbow_version}")
-    implementation fg.deobf("curse.maven:testdummy-${testdummy_version}")
     implementation fg.deobf("curse.maven:toolbelt-${toolbelt_version}")
     implementation fg.deobf("curse.maven:trumpetskeleton-${trumpetskeleton_version}")
     implementation fg.deobf("curse.maven:waystones-${waystones_version}")

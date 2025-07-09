@@ -155,9 +155,6 @@ public class ConfigHandler {
 	@Config.Name("Switchbow Config")
 	public static final SwitchbowConfig SWITCHBOW_CONFIG = new SwitchbowConfig();
 	
-	@Config.Name("TestDummy Config")
-	public static final TestDummyConfig TESTDUMMY_CONFIG = new TestDummyConfig();
-	
 	@Config.Name("Toolbelt Config")
 	public static final ToolbeltConfig TOOLBELT_CONFIG = new ToolbeltConfig();
 	
