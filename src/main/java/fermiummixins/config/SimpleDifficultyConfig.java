@@ -29,4 +29,15 @@ public class SimpleDifficultyConfig {
 			reason = "Requires mod to properly function"
 	)
 	public boolean rainCollectorCanteenFix = false;
+	
+	@Config.Comment("Fixes command permission levels")
+	@Config.Name("Command Permissions Fix (SimpleDifficulty)")
+	@Config.RequiresMcRestart
+	@MixinConfig.MixinToggle(lateMixin = "mixins.fermiummixins.late.simpledifficulty.commands.json", defaultValue = false)
+	@MixinConfig.CompatHandling(
+			modid = ModLoadedUtil.SimpleDifficulty_MODID,
+			desired = true,
+			reason = "Requires mod to properly function"
+	)
+	public boolean commandPermissionsFix = false;
 }

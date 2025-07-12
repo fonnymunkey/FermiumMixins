@@ -53,6 +53,7 @@ dependencies {
     implementation fg.deobf("curse.maven:cosmeticarmorreworked-${cosmeticarmorreworked_version}")
     implementation fg.deobf("curse.maven:defiled-${defiled_version}")
     implementation fg.deobf("curse.maven:disenchanter-${disenchanter_version}")
+    implementation fg.deobf("curse.maven:distinctdamagedescriptions-${distinctdamagedescriptions_version}")
     implementation fg.deobf("curse.maven:doomlike-${doomlike_version}")
     implementation fg.deobf("curse.maven:dramatictrees-${dramatictrees_version}")
     implementation fg.deobf("curse.maven:dynamicsurroundings-${dynamicsurroundings_version}")

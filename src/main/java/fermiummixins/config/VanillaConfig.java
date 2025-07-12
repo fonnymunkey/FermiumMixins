@@ -489,6 +489,12 @@ public class VanillaConfig {
 	@MixinConfig.MixinToggle(earlyMixin = "mixins.fermiummixins.early.vanilla.containerdropfix.json", defaultValue = false)
 	public boolean beaconMerchantGuiItemDropFix = false;
 	
+	@Config.Comment("Improves performance by preventing pathfinding from forcing chunk loading")
+	@Config.Name("Prevent Pathfinding Chunk Loading (Vanilla)")
+	@Config.RequiresMcRestart
+	@MixinConfig.MixinToggle(earlyMixin = "mixins.fermiummixins.early.vanilla.pathfindingloading.json", defaultValue = false)
+	public boolean preventPathfindingChunkLoading = false;
+	
 	private Set<Potion> tippedArrowBlacklistedPotions = null;
 	private List<String> particleRetainCollisionClasses = null;
 	private Map<Integer, IBlockState> dimensionFillerBlockMap = null;

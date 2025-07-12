@@ -68,6 +68,9 @@ public class ConfigHandler {
 	@Config.Name("Disenchanter Config")
 	public static final DisenchanterConfig DISENCHANTER_CONFIG = new DisenchanterConfig();
 	
+	@Config.Name("DistinctDamageDescriptions Config")
+	public static final DistinctDamageDescriptionsConfig DISTINCTDAMAGEDESCRIPTIONS_CONFIG = new DistinctDamageDescriptionsConfig();
+	
 	@Config.Name("DoomlikeDungeons Config")
 	public static final DoomlikeDungeonsConfig DOOMLIKEDUNGEONS_CONFIG = new DoomlikeDungeonsConfig();
 	

@@ -26,6 +26,7 @@ public abstract class ModLoadedUtil {
 	public static final String CosmeticArmorReworked_MODID = "cosmeticarmorreworked";
 	public static final String DefiledLands_MODID = "defiledlands";
 	public static final String Disenchanter_MODID = "disenchanter";
+	public static final String DistinctDamageDescriptions_MODID = "distinctdamagedescriptions";
 	public static final String DoomlikeDungeons_MODID = "dldungeonsjbg";
 	public static final String DramaticTrees_MODID = "dynamictrees";
 	public static final String DynamicSurroundings_MODID = "dsurround";

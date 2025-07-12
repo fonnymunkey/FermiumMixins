@@ -18,4 +18,15 @@ public class InfernalMobsConfig {
 			reason = "Requires mod to properly function"
 	)
 	public boolean infernalParticleSpam = false;
+	
+	@Config.Comment("Stops excessive config loading and saving which wastes performance")
+	@Config.Name("Config Load Spam Fix (InfernalMobs)")
+	@Config.RequiresMcRestart
+	@MixinConfig.MixinToggle(lateMixin = "mixins.fermiummixins.late.infernalmobs.configperformance.json", defaultValue = false)
+	@MixinConfig.CompatHandling(
+			modid = ModLoadedUtil.InfernalMobs_MODID,
+			desired = true,
+			reason = "Requires mod to properly function"
+	)
+	public boolean configLoadSpamFix = false;
 }

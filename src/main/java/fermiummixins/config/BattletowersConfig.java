@@ -18,4 +18,15 @@ public class BattletowersConfig {
 			reason = "Requires mod to properly function"
 	)
 	public boolean golemTargetPatch = false;
+	
+	@Config.Comment("Stops excessive config loading and saving which wastes performance")
+	@Config.Name("Config Load Spam Fix (Battletowers)")
+	@Config.RequiresMcRestart
+	@MixinConfig.MixinToggle(lateMixin = "mixins.fermiummixins.late.battletowers.configperformance.json", defaultValue = false)
+	@MixinConfig.CompatHandling(
+			modid = ModLoadedUtil.Battletowers_MODID,
+			desired = true,
+			reason = "Requires mod to properly function"
+	)
+	public boolean configLoadSpamFix = false;
 }
