@@ -1,6 +1,8 @@
 package fermiummixins.mixin.vanilla;
 
+import fermiummixins.util.ModLoadedUtil;
 import fermiummixins.wrapper.IEntityLivingBase;
+import fermiummixins.wrapper.SetBonusWrapper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.potion.PotionEffect;
@@ -41,6 +43,8 @@ public abstract class EntityLivingBase_ClientPotionMixin extends Entity implemen
 			this.fermiummixins$setIsFromPacket(false);
 			return;
 		}
+		//SetBonus does its own potion sync handling so ignore it
+		if(ModLoadedUtil.isSetBonusLoaded() && SetBonusWrapper.isFantasticEffect(potioneffectIn)) return;
 		ci.cancel();
 	}
 }

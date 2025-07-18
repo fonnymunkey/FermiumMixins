@@ -9,7 +9,7 @@ public class ClientProxy extends CommonProxy {
 
     @Override
     public void registerSubscribers() {
-    
+        super.registerSubscribers();
     }
     
     @Override

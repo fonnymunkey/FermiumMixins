@@ -26,6 +26,9 @@ public class ConfigHandler {
 	@Config.Name("BetterFoliage Config")
 	public static final BetterFoliageConfig BETTERFOLIAGE_CONFIG = new BetterFoliageConfig();
 	
+	@Config.Name("BetterMineshafts Config")
+	public static final BetterMineshaftsConfig BETTERMINESHAFTS_CONFIG = new BetterMineshaftsConfig();
+	
 	@Config.Name("BetterNether Config")
 	public static final BetterNetherConfig BETTERNETHER_CONFIG = new BetterNetherConfig();
 	
@@ -175,6 +178,7 @@ public class ConfigHandler {
 			if(event.getModID().equals(FermiumMixins.MODID)) {
 				ConfigManager.sync(FermiumMixins.MODID, Config.Type.INSTANCE);
 				ConfigHandler.ADVANCEDROCKETRY_CONFIG.refreshConfig();
+				ConfigHandler.BETTERMINESHAFTS_CONFIG.refreshConfig();
 				ConfigHandler.DRAMATICTREES_CONFIG.refreshConfig();
 				ConfigHandler.RESKILLABLE_CONFIG.refreshConfig();
 				ConfigHandler.VANILLA_CONFIG.refreshConfig();

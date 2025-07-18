@@ -6,9 +6,8 @@
   "target": "@env(DEFAULT)",
   "minVersion": "0.8",
   "mixins": [
-  ],
-  "client": [
-    "vanilla.EntityLivingBase_ClientPotionMixin",
-    "vanilla.NetHandlerPlayClient_ClientPotionMixin"
+    "vanilla.BlockStateBase_IdentityMixin",
+    "vanilla.GameData_IdentityMixin",
+    "vanilla.IBlockState_IdentityMixin"
   ]
 }

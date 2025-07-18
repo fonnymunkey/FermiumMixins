@@ -495,6 +495,33 @@ public class VanillaConfig {
 	@MixinConfig.MixinToggle(earlyMixin = "mixins.fermiummixins.early.vanilla.pathfindingloading.json", defaultValue = false)
 	public boolean preventPathfindingChunkLoading = false;
 	
+	@Config.Comment("Replaces some getMaterial checks during chunk and biome generation with direct reference checks, slightly improving performance")
+	@Config.Name("World Gen Material Check Fix (Vanilla)")
+	@Config.RequiresMcRestart
+	@MixinConfig.MixinToggle(earlyMixin = "mixins.fermiummixins.early.vanilla.materialcheck.json", defaultValue = false)
+	public boolean worldGenMaterialCheckFix = false;
+	
+	@Config.Comment("Improves tick performance of falling block checks")
+	@Config.Name("Falling Block Tick Performance (Vanilla)")
+	@Config.RequiresMcRestart
+	@MixinConfig.MixinToggle(earlyMixin = "mixins.fermiummixins.early.vanilla.fallblocktick.json", defaultValue = false)
+	public boolean fallingBlockTickPerformance = false;
+	
+	@Config.Comment("Suppresses checking and logging of OpenGL errors for performance" + "\n" +
+			"Warning: Do not report render errors to anyone while this option is enabled, disable this first in order to get a correct error log")
+	@Config.Name("Suppress OpenGL Error Checking (Vanilla)")
+	@Config.RequiresMcRestart
+	@MixinConfig.MixinToggle(earlyMixin = "mixins.fermiummixins.early.vanilla.glerror.json", defaultValue = false)
+	public boolean suppressOpenGLErrorChecks = false;
+	
+	@Config.Comment("Rewrites part of Forge/Vanilla IBlockState registry handling to fix slow identity-hash-based checks" + "\n" +
+			"Warning: Do not add this to an existing world/pack without making a backup and testing, any mod modifying blockstate instancing/blockstate registry (Unlikely) will conflict" + "\n" +
+			"I won't take responsibility for you rolling the dice and nuking your world")
+	@Config.Name("EXPERIMENTAL: BlockState Identity Registry Patch (Vanilla)")
+	@Config.RequiresMcRestart
+	@MixinConfig.MixinToggle(earlyMixin = "mixins.fermiummixins.early.vanilla.blockstateidentity.json", defaultValue = false)
+	public boolean blockStateIdentityRegistryPatch = false;
+	
 	private Set<Potion> tippedArrowBlacklistedPotions = null;
 	private List<String> particleRetainCollisionClasses = null;
 	private Map<Integer, IBlockState> dimensionFillerBlockMap = null;
@@ -567,6 +594,7 @@ public class VanillaConfig {
 	}
 	
 	public boolean isMineshaftsBlacklistedFromBiome(Biome biome) {
+		if(biome == null) return false;
 		if(this.mineshaftBiomeBlacklistMap == null) {
 			this.mineshaftBiomeBlacklistMap = new HashMap<>();
 			for(String name : this.mineshaftBiomeNameBlacklist) {

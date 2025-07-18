@@ -20,8 +20,7 @@ public abstract class MapGenMineshaft_BiomeBlacklistMixin extends MapGenStructur
     )
     private void fermiummixins_vanillaMapGenMineshaft_canSpawnStructureAtCoords(int chunkX, int chunkZ, CallbackInfoReturnable<Boolean> cir) {
         if(cir.getReturnValue()) {
-            Biome biome = ((IMapGenBaseAccessor)this).getWorld().getBiome(new BlockPos(chunkX * 16 + 8, 0, chunkZ * 16 + 8));
-            
+            Biome biome = this.world.getBiomeProvider().getBiome(new BlockPos(chunkX * 16 + 8, 0, chunkZ * 16 + 8));
             if(ConfigHandler.VANILLA_CONFIG.isMineshaftsBlacklistedFromBiome(biome)) {
                 cir.setReturnValue(false);
 			}

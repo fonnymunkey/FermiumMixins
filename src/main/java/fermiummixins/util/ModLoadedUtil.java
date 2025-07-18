@@ -11,6 +11,7 @@ public abstract class ModLoadedUtil {
 	public static final String AquaAcrobatics_MODID = "aquaacrobatics";
 	public static final String Battletowers_MODID = "battletowers";
 	public static final String BetterFoliage_MODID = "betterfoliage";
+	public static final String BetterMineshafts_MODID = "bettermineshafts";
 	public static final String BetterNether_MODID = "betternether";
 	public static final String BetterQuestingStandard_MODID = "bq_standard";
 	public static final String BiomesOPlenty_MODID = "biomesoplenty";
@@ -58,6 +59,7 @@ public abstract class ModLoadedUtil {
 	public static final String RoughTweaks_MODID = "roughtweaks";
 	public static final String ScalingHealth_MODID = "scalinghealth";
 	public static final String SereneSeasons_MODID = "sereneseasons";
+	public static final String SetBonus_MODID = "setbonus";
 	public static final String SimpleDifficulty_MODID = "simpledifficulty";
 	public static final String SpawnerControl_MODID = "spawnercontrol";
 	public static final String Switchbow_MODID = "switchbow";
@@ -79,6 +81,7 @@ public abstract class ModLoadedUtil {
 	private static Boolean quarkLoaded = null;
 	private static Boolean reskillableLoaded = null;
 	private static Boolean scalingHealthLoaded = null;
+	private static Boolean setBonusLoaded = null;
 	private static Boolean simpleDifficultyLoaded = null;
 	private static Boolean spawnerControlLoaded = null;
 	
@@ -145,6 +148,11 @@ public abstract class ModLoadedUtil {
 	public static boolean isScalingHealthLoaded() {
 		if(scalingHealthLoaded == null) scalingHealthLoaded = Loader.isModLoaded(ScalingHealth_MODID);
 		return scalingHealthLoaded;
+	}
+	
+	public static boolean isSetBonusLoaded() {
+		if(setBonusLoaded == null) setBonusLoaded = Loader.isModLoaded(SetBonus_MODID);
+		return setBonusLoaded;
 	}
 	
 	public static boolean isSimpleDifficultyLoaded() {

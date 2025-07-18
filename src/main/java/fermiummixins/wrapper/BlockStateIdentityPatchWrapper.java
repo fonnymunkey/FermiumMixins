@@ -1,0 +1,97 @@
+package fermiummixins.wrapper;
+
+import com.google.common.collect.Lists;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.util.ObjectIntIdentityMap;
+
+import javax.annotation.Nullable;
+import java.util.ArrayList;
+
+public abstract class BlockStateIdentityPatchWrapper {
+	
+	//https://en.wikipedia.org/wiki/Jesus_nut
+	private static int currentID = 0;
+	
+	public static int getNewID() {
+		return currentID++;
+	}
+	
+	public static class ClearableObjectIntIdentityMapPatched extends ObjectIntIdentityMap<IBlockState> {
+		
+		private final ArrayList<Integer> identityArray;
+		private int size = 0;
+		
+		public ClearableObjectIntIdentityMapPatched() {
+			//TODO May be worth it to set expected size through config based on post-load totals?
+			//Default vanilla size is 512 but RLCraft test was ~40k-50k
+			//TODO test how expected size practically affects performance/alloc, just guessed for now
+			this(65536);
+		}
+		
+		public ClearableObjectIntIdentityMapPatched(int expectedSize) {
+			super(expectedSize);
+			this.identityArray = Lists.newArrayListWithExpectedSize(expectedSize);
+		}
+		
+		@Override
+		public void put(IBlockState key, int value) {
+			if(key == null) return;
+			int fixKey = ((IBlockStateIdentity)key).fermiummixins$getIdentityKey();
+			while(this.identityArray.size() <= fixKey) {
+				this.identityArray.add(null);
+			}
+			Integer prevVal = this.identityArray.set(fixKey, value);
+			
+			if(prevVal == null) {
+				while(this.objectList.size() <= value) {
+					this.objectList.add(null);
+				}
+				this.objectList.set(value, key);
+				
+				this.size++;
+			}
+			else if(prevVal != value) {
+				//This shouldn't ever happen, but handle for it anyways
+				this.objectList.set(value, key);
+			}
+		}
+		
+		@Override
+		public int get(@Nullable IBlockState key) {
+			if(key == null) return -1;
+			Integer integer = this.get(((IBlockStateIdentity)key).fermiummixins$getIdentityKey());
+			if(integer == null) {
+				integer = this.get(key.getBlock().getStateFromMeta(key.getBlock().getMetaFromState(key)));
+			}
+			return integer;
+		}
+		
+		private Integer get(int key) {
+			if(key >= this.identityArray.size()) return null;
+			return this.identityArray.get(key);
+		}
+		
+		@Override
+		public int size() {
+			return this.size;
+		}
+		
+		public void clear() {
+			this.objectList.clear();
+			this.identityArray.clear();
+			this.size = 0;
+		}
+		
+		public void remove(IBlockState key) {
+			if(key == null) return;
+			int fixKey = ((IBlockStateIdentity)key).fermiummixins$getIdentityKey();
+			//Do not use remove, will shift array
+			Integer prev = this.get(fixKey);
+			if(prev != null) {
+				this.identityArray.set(fixKey, null);
+				this.objectList.set(prev, null);
+				this.size--;
+			}
+		}
+	}
+}
