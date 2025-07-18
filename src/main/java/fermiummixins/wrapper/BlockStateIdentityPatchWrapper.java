@@ -42,17 +42,13 @@ public abstract class BlockStateIdentityPatchWrapper {
 			}
 			Integer prevVal = this.identityArray.set(fixKey, value);
 			
-			if(prevVal == null) {
+			if(prevVal == null || prevVal != value) {
 				while(this.objectList.size() <= value) {
 					this.objectList.add(null);
 				}
 				this.objectList.set(value, key);
 				
 				this.size++;
-			}
-			else if(prevVal != value) {
-				//This shouldn't ever happen, but handle for it anyways
-				this.objectList.set(value, key);
 			}
 		}
 		
