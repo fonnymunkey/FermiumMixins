@@ -170,4 +170,15 @@ public class QuarkConfig {
 			reason = "Requires mod to properly function"
 	)
 	public boolean usageTickerForcedVisible = false;
+
+	@Config.Comment("Increases performance of Monster Boxes looking for players nearby to activate")
+	@Config.Name("Monster Box Check Player Performance (Quark)")
+	@Config.RequiresMcRestart
+	@MixinConfig.MixinToggle(lateMixin = "mixins.fermiummixins.late.quark.monsterboxperformance.json", defaultValue = false)
+	@MixinConfig.CompatHandling(
+			modid = ModLoadedUtil.Quark_MODID,
+			desired = true,
+			reason = "Requires mod to properly function"
+	)
+	public boolean monsterBoxPerformance = false;
 }
