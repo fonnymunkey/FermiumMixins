@@ -515,6 +515,7 @@ public class VanillaConfig {
 	public boolean suppressOpenGLErrorChecks = false;
 	
 	@Config.Comment("Rewrites part of Forge/Vanilla IBlockState registry handling to fix slow identity-hash-based checks" + "\n" +
+			"This can improve performance of chunk saving and chunk generation" + "\n" +
 			"Warning: Do not add this to an existing world/pack without making a backup and testing, any mod modifying blockstate instancing/blockstate registry (Unlikely) will conflict" + "\n" +
 			"I won't take responsibility for you rolling the dice and nuking your world")
 	@Config.Name("EXPERIMENTAL: BlockState Identity Registry Patch (Vanilla)")

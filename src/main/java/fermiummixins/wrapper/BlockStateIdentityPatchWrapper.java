@@ -40,16 +40,12 @@ public abstract class BlockStateIdentityPatchWrapper {
 			while(this.identityArray.size() <= fixKey) {
 				this.identityArray.add(null);
 			}
-			Integer prevVal = this.identityArray.set(fixKey, value);
-			
-			if(prevVal == null || prevVal != value) {
-				while(this.objectList.size() <= value) {
-					this.objectList.add(null);
-				}
-				this.objectList.set(value, key);
-				
-				this.size++;
+			if(this.identityArray.set(fixKey, value) == null) this.size++;
+			//objectList can have multiple values return the same state ref but total size is based on total state refs
+			while(this.objectList.size() <= value) {
+				this.objectList.add(null);
 			}
+			this.objectList.set(value, key);
 		}
 		
 		@Override
