@@ -74,6 +74,13 @@ public class QuarkConfig {
 	)
 	public boolean enderWatcherPerformance = false;
 	
+	@Config.Comment("Allows for setting how many ticks the ender watcher should take before updating" + "\n" +
+			"Requires \"Enchanted Book Tooltip Rendering Patch (Quark)\" enabled")
+	@Config.Name("Ender Watcher Tick Rate (Quark)")
+	@Config.RequiresMcRestart
+	@Config.RangeInt(min = 1)
+	public int enderWatchingTickFrequency = 1;
+	
 	@Config.Comment("Disables checks that still run even when springy slime is disabled that waste performance" + "\n" +
 			"Springy Slime should still be disabled in the Quark config")
 	@Config.Name("Springy Slime Force Disable (Quark)")
@@ -171,7 +178,7 @@ public class QuarkConfig {
 	)
 	public boolean usageTickerForcedVisible = false;
 
-	@Config.Comment("Increases performance of Monster Boxes looking for players nearby to activate")
+	@Config.Comment("Increases performance of Monster Boxes looking for players nearby to activate, and prevents creative mode from triggering the box")
 	@Config.Name("Monster Box Check Player Performance (Quark)")
 	@Config.RequiresMcRestart
 	@MixinConfig.MixinToggle(lateMixin = "mixins.fermiummixins.late.quark.monsterboxperformance.json", defaultValue = false)

@@ -1,5 +1,6 @@
 package fermiummixins.mixin.quark;
 
+import fermiummixins.handlers.ConfigHandler;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
@@ -28,12 +29,14 @@ public abstract class TileEnderWatcher_PerformanceMixin {
             cancellable = true
     )
     private void fermiummixins_quarkTileEnderWatcher_update(CallbackInfo ci) {
-        this.fermiummixins$tick++;
-        if(this.fermiummixins$tick %5 == 0) {
-            this.fermiummixins$tick = 0;
-            return;
+        if(ConfigHandler.QUARK_CONFIG.enderWatchingTickFrequency > 1) {
+            this.fermiummixins$tick++;
+            if(this.fermiummixins$tick%ConfigHandler.QUARK_CONFIG.enderWatchingTickFrequency == 0) {
+                this.fermiummixins$tick = 0;
+                return;
+            }
+            ci.cancel();
         }
-        ci.cancel();
     }
 
     @Redirect(

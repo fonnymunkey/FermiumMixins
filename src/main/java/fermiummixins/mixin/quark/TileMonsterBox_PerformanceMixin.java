@@ -20,7 +20,7 @@ public abstract class TileMonsterBox_PerformanceMixin extends TileEntity {
             at = @At(value = "LOAD", ordinal = 0)
     )
     private boolean fermiummixins_quarkTileMonsterBox_update_loadBefore(boolean doBreak, @Share("actuallyBreak") LocalBooleanRef actuallyBreak) {
-        actuallyBreak.set(doBreak || this.world.isAnyPlayerWithinRangeAt(this.getPos().getX(), this.getPos().getY(), this.getPos().getZ(), 2.5));
+        actuallyBreak.set(doBreak || this.world.isAnyPlayerWithinRangeAt(this.getPos().getX() + 0.5D, this.getPos().getY() + 0.5D, this.getPos().getZ() + 0.5D, 3.0D));
         return true;
     }
 
