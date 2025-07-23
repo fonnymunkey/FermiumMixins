@@ -3,8 +3,10 @@ package fermiummixins.config;
 import fermiumbooter.annotations.MixinConfig;
 import fermiummixins.FermiumMixins;
 import fermiummixins.util.ModLoadedUtil;
+import net.minecraft.block.Block;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.config.Config;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -66,7 +68,7 @@ public class ReskillableConfig {
 	)
 	public boolean indirectSelfDamagePatch = false;
 	
-	@Config.Comment("Reworks RoadWalk perk to be active anywhere exposed to sky instead of only on grass path blocks")
+	@Config.Comment("Reworks road walk perk to be based on a configurable list instead of only on grass path blocks")
 	@Config.Name("RoadWalk Rework (Reskillable)")
 	@Config.RequiresMcRestart
 	@MixinConfig.MixinToggle(lateMixin = "mixins.fermiummixins.late.reskillable.roadwalk.json", defaultValue = false)
@@ -76,6 +78,16 @@ public class ReskillableConfig {
 			reason = "Requires mod to properly function"
 	)
 	public boolean roadWalkRework = false;
+	
+	@Config.Comment("Blocks defined in this list will trigger the road walk effect when walked on" + "\n" +
+			"Requires \"RoadWalk Rework (Reskillable)\" enabled")
+	@Config.Name("RoadWalk Block List")
+	public String[] roadWalkList = { "minecraft:grass_path" };
+	
+	@Config.Comment("If enabled, allows for the road walk effect to be triggered when exposed to the sky regardless of the block underneath" + "\n" +
+			"Requires \"RoadWalk Rework (Reskillable)\" enabled")
+	@Config.Name("RoadWalk Sky Override")
+	public boolean roadWalkSkyOverride = false;
 	
 	@Config.Comment("Makes Golden Osmosis perk also repair DefiledLand's Golden BookWyrm armor")
 	@Config.Name("Golden BookWyrm Osmosis (Reskillable/DefiledLands)")
@@ -110,6 +122,7 @@ public class ReskillableConfig {
 	public boolean undershirtCompat = false;
 	
 	private Set<ResourceLocation> hungryFarmerFoodBlacklistSet = null;
+	private Set<Block> roadWalkBlockSet = null;
 	
 	public Set<ResourceLocation> getHungryFarmerBlacklist() {
 		if(this.hungryFarmerFoodBlacklistSet == null) {
@@ -122,7 +135,19 @@ public class ReskillableConfig {
 		return this.hungryFarmerFoodBlacklistSet;
 	}
 	
+	public Set<Block> getRoadWalkBlockSet() {
+		if(this.roadWalkBlockSet == null) {
+			this.roadWalkBlockSet = new HashSet<>();
+			for(String name : this.roadWalkList) {
+				Block block = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(name));
+				if(block != null) this.roadWalkBlockSet.add(block);
+			}
+		}
+		return this.roadWalkBlockSet;
+	}
+	
 	public void refreshConfig() {
 		this.hungryFarmerFoodBlacklistSet = null;
+		this.roadWalkBlockSet = null;
 	}
 }
