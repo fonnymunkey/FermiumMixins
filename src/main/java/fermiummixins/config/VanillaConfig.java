@@ -522,6 +522,14 @@ public class VanillaConfig {
 	@Config.RequiresMcRestart
 	@MixinConfig.MixinToggle(earlyMixin = "mixins.fermiummixins.early.vanilla.blockstateidentity.json", defaultValue = false)
 	public boolean blockStateIdentityRegistryPatch = false;
+
+	@Config.Comment("For every spawn attempt, forge fires the same event (WorldEvent.PotentialSpawns) TWICE to gather which mobs can spawn at the chosen Location. \n" +
+			"On the second call, there is no way for modders to use that event to influence the spawn outcome meaningfully other than cancelling the chosen spawn, which there are better methods for.\n" +
+			"Since the spawning logic is usually called very often per tick, cancelling the second call is good for performance.")
+	@Config.Name("Cancel firing second PotentialSpawnsEvent (Vanilla)")
+	@Config.RequiresMcRestart
+	@MixinConfig.MixinToggle(earlyMixin = "mixins.fermiummixins.early.vanilla.potentialspawnsevent.json", defaultValue = false)
+	public boolean potentialSpawnsEventPatch = false;
 	
 	private Set<Potion> tippedArrowBlacklistedPotions = null;
 	private List<String> particleRetainCollisionClasses = null;
