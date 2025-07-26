@@ -188,4 +188,15 @@ public class QuarkConfig {
 			reason = "Requires mod to properly function"
 	)
 	public boolean monsterBoxPerformance = false;
+	
+	@Config.Comment("Increases performance of revamped stone gen and underground biome generation")
+	@Config.Name("Underground Gen Performance Fix (Quark)")
+	@Config.RequiresMcRestart
+	@MixinConfig.MixinToggle(lateMixin = "mixins.fermiummixins.late.quark.worldgenlag.json", defaultValue = false)
+	@MixinConfig.CompatHandling(
+			modid = ModLoadedUtil.Quark_MODID,
+			desired = true,
+			reason = "Requires mod to properly function"
+	)
+	public boolean undergroundGenPerformanceFix = false;
 }

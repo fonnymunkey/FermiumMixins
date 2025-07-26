@@ -523,6 +523,12 @@ public class VanillaConfig {
 	@MixinConfig.MixinToggle(earlyMixin = "mixins.fermiummixins.early.vanilla.blockstateidentity.json", defaultValue = false)
 	public boolean blockStateIdentityRegistryPatch = false;
 	
+	@Config.Comment("Fixes Optifine adding reflection to block storage methods causing wasted performance")
+	@Config.Name("Block Storage Optifine Lag Fix (Vanilla)")
+	@Config.RequiresMcRestart
+	@MixinConfig.MixinToggle(earlyMixin = "mixins.fermiummixins.early.vanilla.blockstorageoptifine.json", defaultValue = false)
+	public boolean blockStorageOptifineLagFix = false;
+	
 	private Set<Potion> tippedArrowBlacklistedPotions = null;
 	private List<String> particleRetainCollisionClasses = null;
 	private Map<Integer, IBlockState> dimensionFillerBlockMap = null;
