@@ -97,6 +97,9 @@ public class ConfigHandler {
 	
 	@Config.Name("ForgottenItems Config")
 	public static final ForgottenItemsConfig FORGOTTENITEMS_CONFIG = new ForgottenItemsConfig();
+
+	@Config.Name("InControl Config")
+	public static final InControlConfig INCONTROL_CONFIG = new InControlConfig();
 	
 	@Config.Name("InfernalMobs Config")
 	public static final InfernalMobsConfig INFERNALMOBS_CONFIG = new InfernalMobsConfig();
