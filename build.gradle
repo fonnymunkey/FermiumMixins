@@ -62,6 +62,7 @@ dependencies {
     implementation fg.deobf("curse.maven:elenai-${elenai_version}")
     implementation fg.deobf("curse.maven:fancymenu-${fancymenu_version}")
     implementation fg.deobf("curse.maven:firstaid-${firstaid_version}")
+    implementation fg.deobf("curse.maven:foamfix-optimization-mod-${foamfix_version}")
     implementation fg.deobf("curse.maven:foodexpansion-${foodexpansion_version}")
     implementation fg.deobf("curse.maven:forgottenitems-${forgottenitems_version}")
     implementation fg.deobf("curse.maven:infernalmobs-${infernalmobs_version}")
