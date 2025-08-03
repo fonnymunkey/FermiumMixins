@@ -91,9 +91,6 @@ public class ConfigHandler {
 	
 	@Config.Name("FirstAid Config")
 	public static final FirstAidConfig FIRSTAID_CONFIG = new FirstAidConfig();
-
-	@Config.Name("FoamFix Config")
-	public static final FoamFixConfig FOAMFIX_CONFIG = new FoamFixConfig();
 	
 	@Config.Name("FoodExpansion Config")
 	public static final FoodExpansionConfig FOODEXPANSION_CONFIG = new FoodExpansionConfig();
