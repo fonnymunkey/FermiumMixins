@@ -19,8 +19,8 @@ import java.util.List;
 import java.util.Set;
 
 @Mixin(WorldServer.class)
-public abstract class WorldServerMixin extends World {
-    protected WorldServerMixin(ISaveHandler saveHandlerIn, WorldInfo info, WorldProvider providerIn, Profiler profilerIn, boolean client) {
+public abstract class WorldServer_UnloadEntitiesInEmptyWorld extends World {
+    protected WorldServer_UnloadEntitiesInEmptyWorld(ISaveHandler saveHandlerIn, WorldInfo info, WorldProvider providerIn, Profiler profilerIn, boolean client) {
         super(saveHandlerIn, info, providerIn, profilerIn, client);
     }
 
