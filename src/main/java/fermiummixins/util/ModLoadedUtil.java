@@ -35,6 +35,7 @@ public abstract class ModLoadedUtil {
 	public static final String ElenaiDodge_MODID = "elenaidodge";
 	public static final String FancyMenu_MODID = "fancymenu";
 	public static final String FirstAid_MODID = "firstaid";
+	public static final String FoamFix_MODID = "foamfix";
 	public static final String FoodExpansion_MODID = "foodexpansion";
 	public static final String ForgottenItems_MODID = "forgottenitems";
 	public static final String InfernalMobs_MODID = "infernalmobs";

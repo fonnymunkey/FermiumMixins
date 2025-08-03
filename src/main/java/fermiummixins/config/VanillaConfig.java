@@ -528,6 +528,12 @@ public class VanillaConfig {
 	@Config.RequiresMcRestart
 	@MixinConfig.MixinToggle(earlyMixin = "mixins.fermiummixins.early.vanilla.blockstorageoptifine.json", defaultValue = false)
 	public boolean blockStorageOptifineLagFix = false;
+
+	@Config.Comment("A modern version of \"fixWorldEntityCleanup\" by FoamFix. Made because the one by FoamFix was rarely creating ConcurrentModificationException crashes due to being older than the forge code it fixed.")
+	@Config.Name("Unload Entities on empty world (Vanilla)")
+	@Config.RequiresMcRestart
+	@MixinConfig.MixinToggle(earlyMixin = "mixins.fermiummixins.early.vanilla.unloadentities.json", defaultValue = false)
+	public boolean patchUpdateEntitiesPatch = false;
 	
 	private Set<Potion> tippedArrowBlacklistedPotions = null;
 	private List<String> particleRetainCollisionClasses = null;
