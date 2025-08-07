@@ -528,6 +528,12 @@ public class VanillaConfig {
 	@Config.RequiresMcRestart
 	@MixinConfig.MixinToggle(earlyMixin = "mixins.fermiummixins.early.vanilla.blockstorageoptifine.json", defaultValue = false)
 	public boolean blockStorageOptifineLagFix = false;
+
+	@Config.Comment("Fixes Vanilla limiting individual velocity vector components (X and Z) to values between -3.9 and +3.9 (blocks per tick) when sending entity velocity update packets to clients, making fast projectiles visibly strafe sideways when shot in specific directions.")
+	@Config.Name("Entity Velocity Sync (Vanilla)")
+	@Config.RequiresMcRestart
+	@MixinConfig.MixinToggle(earlyMixin = "mixins.fermiummixins.early.vanilla.entityvelocitysync.json", defaultValue = false)
+	public boolean entityVelocitySync = false;
 	
 	private Set<Potion> tippedArrowBlacklistedPotions = null;
 	private List<String> particleRetainCollisionClasses = null;
